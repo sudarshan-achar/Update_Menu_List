@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <node name="/com/example/UpdateList">
+   <interface name="com.example.UpdateList">
+     <method name="AddClient">
+       <arg name="info" type="(si)" direction="in" />
+       <arg name="ret" type="i" direction="out" />
+     </method>
+     <method name="RemoveClient">      
+       <arg name="name" type="s" direction="in" />
+       <arg name="passcode" type="i" direction="in" />
+       <arg name="ret" type="i" direction="out" />
+     </method>
+     <method name="UpdateMenuList">
+       <arg name="password" type="i" direction="in" />
+       <arg name="elements" type="(iiss)" direction="in" />
+       <arg name="ret" type="i" direction="out" />
+     </method>
+     <method name="GetClientListSize">
+       <arg name="ret" type="i" direction="out" />
+     </method>
+     <method name="GetMenuListSize">
+       <arg name="ret" type="i" direction="out" />
+     </method>
+     <method name="GetClientInfo">
+       <arg name="ret" type="(si)" direction="out" />
+     </method>
+     <method name="GetMenuInfo">
+       <arg name="ret" type="(iiss)" direction="out" />
+     </method>
+   </interface>
+ </node>
