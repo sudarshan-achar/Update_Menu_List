@@ -14,6 +14,6 @@ Commands to compile and Run the project:
    * cmake ../
    * make
 4. First run the Source binary in the current terminal.
-5. Open different terminals windows at the same location and run the Client binary.
-6. Use 123 as passcode/password (Refer types.h).
-7. Analyse output at terminal pannel as well as in result directory.
+5. Open different terminal windows at the same location and run the Client binary.
+6. Use *123* as passcode/password (Refer types.h).
+7. Analyse the output at terminal pannel as well as in *result* directory.
