@@ -88,7 +88,7 @@ int main(){
 		std::cout<<"\n\n1.......Write/Update menu .....\n"
 				"2.......Display all menu Lists... \n"
 				"3.......Display all clients ... \n"
-				"4.......Exit.......\n\n";
+				"4.......Save/Exit.......\n\n";
 
 		std::cin>>choice;
 
@@ -129,7 +129,7 @@ int main(){
 			break;
 		}
 		case 4:{
-			std::cout<<"Application Terminated.....Client destroyed....!!!!.. \n";
+			std::cout<<"Application Terminated.....Client destroyed......Menu list saved to result file...!!!!.. \n";
 			return 0;
 		}
 		default:{

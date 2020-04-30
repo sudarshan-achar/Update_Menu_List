@@ -41,16 +41,17 @@ public:
 public:
 	//Adaptor function
 
-    int32_t AddClient(const ::DBus::Struct< std::string, int32_t >& info);
-    int32_t RemoveClient(const std::string& name, const int32_t& passcode);
-    int32_t UpdateMenuList(const int32_t& password, const ::DBus::Struct< int32_t, int32_t, std::string, std::string >& elements);
-    int32_t GetClientListSize();
-    int32_t GetMenuListSize();
+	int32_t AddClient(const ::DBus::Struct< std::string, int32_t >& info);
+	int32_t RemoveClient(const std::string& name, const int32_t& passcode);
+	int32_t UpdateMenuList(const int32_t& password, const ::DBus::Struct< int32_t, int32_t, std::string, std::string >& elements);
+	int32_t GetClientListSize();
+	int32_t GetMenuListSize();
 	::DBus::Struct< std::string, int32_t > GetClientInfo();
 	::DBus::Struct< int32_t, int32_t, std::string, std::string > GetMenuInfo();
 
 private:
 	int appendMenu(MenuInfo);
+	int saveToResultFile(int clientId, str_t clientName);
 
 private:
 	std::vector<ClientInfo> m_Clientlist;
@@ -60,6 +61,7 @@ private:
 	int m_passcode;
 	int m_menuNum;
 	int m_index;
+	std::ofstream m_resultFile;
 };
 
 #endif /* DATABASE_H_ */

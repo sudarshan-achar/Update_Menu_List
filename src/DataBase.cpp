@@ -7,12 +7,19 @@
 
 #include "DataBase.h"
 
-DataBase::DataBase(Connection &connection):m_passcode(123),m_index(0),m_menuNum(0),ObjectAdaptor(connection,SERVER_PATH) {
-	// TODO Auto-generated constructor stub
+DataBase::DataBase(Connection &connection):m_passcode(PASSCODE),m_index(0),m_menuNum(0),ObjectAdaptor(connection,SERVER_PATH) {
+	system("cd ../ && rm -rf result && mkdir result");
+	m_resultFile.open("../result/MenuList.txt");
+	if(m_resultFile.is_open()){
+		m_resultFile<<"          .........................................********  MENU LIST  ********...................................................\n\n"<<std::endl;
+	}else{
+		std::cout<<"Some problem in Creating Result file\n";
+	}
 }
 
 DataBase::~DataBase() {
-	// TODO Auto-generated destructor stub
+	std::cout<<"Database closed\n";
+	m_resultFile.close();
 }
 
 int DataBase::AddClient_A(ClientInfo info) {
@@ -26,6 +33,7 @@ int DataBase::RemoveClient_A(str_t name, int passcode) {
 		for(auto it=m_Clientlist.begin();it<m_Clientlist.end();it++){
 			if((*it).name==name){
 				std::cout<<"Removed Client --> "<<(*it).id<<"  "<<(*it).name<<"\n";
+				saveToResultFile((*it).id,name);
 				m_Clientlist.erase(it);
 				return 0;
 			}
@@ -117,6 +125,20 @@ int DataBase::appendMenu(MenuInfo menu_Elements) {
 	return 0;
 }
 
+int DataBase::saveToResultFile(int clientId, str_t clientName) {
+	for(auto i=m_MenuList.begin();i<m_MenuList.end();i++){
+		if((*i).clientId==clientId){
+			if(m_resultFile.is_open()){
+				m_resultFile<<"Menu Name : "<<(*i).menuName<<"\nMenu Adder : "<<clientName<<"\nMenu content : "<<(*i).details<<"\n\n"<<std::endl;
+			}else{
+				std::cout<<"Some problem in opening/saving file\n";
+			}
+			m_MenuList.erase(i);
+		}
+	}
+	return 0;
+}
+
 BusDispatcher dispatcher;
 
 void sigFun(int sig){
@@ -135,10 +157,9 @@ int main(){
 
 	DataBase db(conn);
 
-	std::cout<<"Connected \n";
+	std::cout<<"Connected................................ \n";
 
 	dispatcher.enter();
 	//conn.disconnect();
 	return 0;
 }
-

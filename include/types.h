@@ -23,6 +23,7 @@
 
 #include <dbus-c++/dbus.h>
 
+constexpr int PASSCODE=123;
 
 using  str_t = std::string;
 
