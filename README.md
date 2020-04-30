@@ -11,8 +11,8 @@ Commands to compile and Run the project:
 2. Open terminal in Project base directory.
 3. Execute below commands
    * mkdir build && cd build
-    cmake ../
-    make *
+   * cmake ../
+   * make
 4. First run the Source binary in the current terminal.
 5. Open different terminals windows at the same location and run the Client binary.
 6. Use 123 as passcode/password (Refer types.h).
